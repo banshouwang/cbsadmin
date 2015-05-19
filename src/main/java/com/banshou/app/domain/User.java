@@ -1,126 +1,134 @@
 package com.banshou.app.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "bs_user")
 public class User {
-	private int uid;
+
+	@Id
+	@Column(name = "u_openid", nullable = false)
 	private String openId;
-	private int creditId;
+
+	@Column(name = "u_name", nullable = true)
 	private String name;
-	private int age;
-	private String gender;
-	private String address;
-	private String birthday;
+
+	@Column(name = "u_image", nullable = true)
 	private String image;
+
+	@Column(name = "u_mobile", nullable = true)
 	private String mobile;
-	private String tel;
+
+	@Column(name = "u_is_vip", nullable = true)
 	private boolean isvip;
-	private boolean isshop;
+
+	@Column(name = "u_is_store", nullable = true)
+	private boolean isstore;
+
+	@Column(name = "u_storenum", nullable = true)
+	private String storeNum;
+
+	@Column(name = "u_time", nullable = true)
 	private String time;
-	private String number;
-	private String password;
+
+	@Column(name = "u_point", nullable = true)
 	private int point;
+
+	@Column(name = "u_gender", nullable = true)
+	private String gender;
+
+	@Column(name = "u_password", nullable = true)
+	private String password;
 	
-	public int getUid() {
-		return uid;
-	}
-	public void setUid(int uid) {
-		this.uid = uid;
-	}
-	public int getCreditId() {
-		return creditId;
-	}
-	public void setCreditId(int creditId) {
-		this.creditId = creditId;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public int getAge() {
-		return age;
-	}
-	public void setAge(int age) {
-		this.age = age;
-	}
 	public String getGender() {
 		return gender;
 	}
+
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
-	}
-	public String getBirthday() {
-		return birthday;
-	}
-	public void setBirthday(String birthday) {
-		this.birthday = birthday;
-	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getMobile() {
-		return mobile;
-	}
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
-	public String getTel() {
-		return tel;
-	}
-	public void setTel(String tel) {
-		this.tel = tel;
-	}
-	public boolean isIsvip() {
-		return isvip;
-	}
-	public void setIsvip(boolean isvip) {
-		this.isvip = isvip;
-	}
-	public boolean isIsshop() {
-		return isshop;
-	}
-	public void setIsshop(boolean isshop) {
-		this.isshop = isshop;
-	}
-	public String getTime() {
-		return time;
-	}
-	public void setTime(String time) {
-		this.time = time;
-	}
-	public String getNumber() {
-		return number;
-	}
-	public void setNumber(String number) {
-		this.number = number;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
+
 	public String getOpenId() {
 		return openId;
 	}
+
 	public void setOpenId(String openId) {
 		this.openId = openId;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public String getMobile() {
+		return mobile;
+	}
+
+	public void setMobile(String mobile) {
+		this.mobile = mobile;
+	}
+
+	public boolean isIsvip() {
+		return isvip;
+	}
+
+	public void setIsvip(boolean isvip) {
+		this.isvip = isvip;
+	}
+
+	public boolean isIsstore() {
+		return isstore;
+	}
+
+	public void setIsstore(boolean isstore) {
+		this.isstore = isstore;
+	}
+
+	public String getStoreNum() {
+		return storeNum;
+	}
+
+	public void setStoreNum(String storeNum) {
+		this.storeNum = storeNum;
+	}
+
+	public String getTime() {
+		return time;
+	}
+
+	public void setTime(String time) {
+		this.time = time;
+	}
+
 	public int getPoint() {
 		return point;
 	}
+
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 }

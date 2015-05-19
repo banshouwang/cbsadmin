@@ -9,24 +9,24 @@
 <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.css">
-<link rel="stylesheet" href="lib/font-awesome/css/font-awesome.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/theme.css">
-<link rel="stylesheet" type="text/css" href="stylesheets/premium.css">
-<link rel="stylesheet" type="text/css" href="lib/datatable/dataTables.bootstrap.css">
+<link rel="stylesheet" type="text/css" href="../lib/bootstrap/css/bootstrap.css">
+<link rel="stylesheet" href="../lib/font-awesome/css/font-awesome.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/theme.css">
+<link rel="stylesheet" type="text/css" href="../stylesheets/premium.css">
+<link rel="stylesheet" type="text/css" href="../lib/datatable/dataTables.bootstrap.css">
 
-<script type="text/javascript" src="lib/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="lib/jQuery-Knob/js/jquery.knob.js"></script>
-<script type="text/javascript" src="lib/datatable/jquery.dataTables.min.js"></script>
-<script type="text/javascript" src="lib/datatable/dataTables.bootstrap.js" ></script>
-<script type="text/javascript" src="js/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="../lib/datatable/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="../lib/datatable/dataTables.bootstrap.js" ></script>
+<script type="text/javascript" src="../js/jquery.validate.min.js" ></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#example').DataTable();
 	} );
 	function openpage(command){
 		if(command == "userManage"){
-			$("#maincontent").load("users.jsp");
+			$("#maincontent").load("usermanage.jsp");
 		}
 		if(command == "goodsManage"){
 			$("#maincontent").load("goodsmanage.jsp");
@@ -45,6 +45,9 @@
 		}
 		if(command == "addcate"){
 			$("#maincontent").load("addcate.jsp");
+		}
+		if(command == "requestManage"){
+			$("#maincontent").load("requestmanage.jsp");
 		}
 	}
 </script>
@@ -140,6 +143,7 @@
 			</li>
 			<li>
 				<ul class="premium-menu nav nav-list collapse">
+					<li><a href="javascript:void(0);" onclick="openpage('requestManage')"><span class="fa fa-caret-right"></span> 请求管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('userManage')"><span class="fa fa-caret-right"></span> 用户管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('goodsManage')"><span class="fa fa-caret-right"></span> 商品管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('cateManage')"><span class="fa fa-caret-right"></span> 分类管理</a></li>
@@ -730,7 +734,7 @@
 
 
 
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	<script src="../lib/bootstrap/js/bootstrap.js"></script>
 	<script type="text/javascript">
 	$("[rel=tooltip]").tooltip();
 	$(function() {

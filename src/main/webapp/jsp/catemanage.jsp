@@ -7,7 +7,7 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#cates').dataTable({
-			"ajax": "json/getAllCates.action",
+			"ajax": "../d/getAllCates.action",
 			"columns" : [ {
 				"data" : "num"
 			}, {
@@ -44,13 +44,12 @@
 								<th>是否有效</th>
 							</tr>
 						</thead>
-						
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
+	
 	<script type="text/javascript">
 		$("[rel=tooltip]").tooltip();
 		$(function() {
