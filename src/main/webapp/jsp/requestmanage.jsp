@@ -50,9 +50,103 @@
 				}, {
 					"data" : null,
 					render : function(data, type, row) {
-						return "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')>处理</a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')>完成</a>";
+						if(data.status == "Not Start"){
+							return "<a href='javascript:void(0);' onclick=begin('" + data.number + "')>处理</a>";
+						} else if(data.status == "In Progress"){
+							return "<a href='javascript:void(0);' onclick=cancel('" + data.number + "')>取消</a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=finish('" + data.number + "')>完成</a>";
+						} else {
+							return "<a href='javascript:void(0);' onclick=del('" + data.number + "')>删除</a>";
+						}
 					}
 				} ]
+			});
+		}
+
+		function begin(number){
+			$.ajax({
+				type : "post",
+				url : "../d/beginRequest.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					var obj = data.data;
+					if(obj == "success"){
+						tableRender();
+					} else {
+						alert("网络出错，请稍候再试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+
+		function finish(number){
+			$.ajax({
+				type : "post",
+				url : "../d/finishRequest.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					var obj = data.data;
+					if(obj == "success"){
+						tableRender();
+					} else {
+						alert("网络出错，请稍候再试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+
+		function cancel(number){
+			$.ajax({
+				type : "post",
+				url : "../d/cancelRequest.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					var obj = data.data;
+					if(obj == "success"){
+						tableRender();
+					} else {
+						alert("网络出错，请稍候再试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+		
+		function del(number){
+			$.ajax({
+				type : "post",
+				url : "../d/deleteRequest.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					var obj = data.data;
+					if(obj == "success"){
+						tableRender();
+					} else {
+						alert("网络出错，请稍候再试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
 			});
 		}
 	</script>

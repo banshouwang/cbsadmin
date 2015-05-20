@@ -34,9 +34,20 @@ public class RequestDaoImpl implements RequestDao {
 	}
 
 	@Override
-	public void approveRequest(int id, String mobile) {
-		
+	public void approveRequest(String number, String flag) {
+		Request r = em.find(Request.class, number);
+		if (!"delete".equals(flag)) {
+			if ("begin".equals(flag)) {
+				r.setStatus("In Progress");
+			} else if ("finish".equals(flag)) {
+				r.setStatus("Finished");
+			} else {
+				r.setStatus("Cancelled");
+			}
+			em.merge(r);
+			em.flush();
+		} else {
+			em.remove(r);
+		}
 	}
-	
-	
 }

@@ -39,7 +39,26 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
-
+		<action name="beginRequest" class="com.banshou.app.actions.RequestAction" method="beginRequest">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="finishRequest" class="com.banshou.app.actions.RequestAction" method="finishRequest">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteRequest" class="com.banshou.app.actions.RequestAction" method="deleteRequest">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="cancelRequest" class="com.banshou.app.actions.RequestAction" method="cancelRequest">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 	</package>
 
 </struts>

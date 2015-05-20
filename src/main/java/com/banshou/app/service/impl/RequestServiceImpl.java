@@ -30,7 +30,7 @@ public class RequestServiceImpl implements RequestService {
 
 	@Override
 	@Transactional
-	public void approveRequest(int id, String mobile) {
-		requestDao.approveRequest(id, mobile);
+	public void approveRequest(String number, String flag) {
+		requestDao.approveRequest(number, flag);
 	}
 }
