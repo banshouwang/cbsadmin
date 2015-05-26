@@ -1,12 +1,10 @@
 package com.banshou.app.service;
 
-import com.banshou.app.dao.GoodsDao;
+import java.util.List;
+
 import com.banshou.app.domain.Goods;
 
-public class GoodsService {
-
-	public int addGoods(Goods goods){
-		GoodsDao goodsDao = new GoodsDao();
-		return goodsDao.add(goods);
-	}
+public interface GoodsService {
+	public List<Goods> getAll();
+	public void deleteById(String id);
 }	

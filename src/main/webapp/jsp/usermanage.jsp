@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 </head>
 <body class=" theme-blue">
-<div class="content_other">
+	<div class="content_other">
 		<div class="main-content">
 			<div class="btn-toolbar list-toolbar">
 				<button class="btn btn-primary">
@@ -13,7 +13,7 @@
 				</button>
 				<div class="btn-group"></div>
 			</div>
-			<table id="users" class="table">
+			<table id="users" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 						<th width="260px">用户编号</th>
@@ -30,41 +30,41 @@
 	</div>
 
 	<script type="text/javascript">
-	$(document).ready(function() {
-		tableRender();
-	});
-
-	function tableRender() {
-		$('#users').dataTable({
-			destroy: true,
-			"ajax" : "../d/getAllUsers.action",
-			"columns" : [ {
-				"data" : "openId"
-			}, {
-				"data" : "name"
-			}, {
-				"data" : "gender"
-			}, {
-				"data" : "mobile"
-			}, {
-				"data" : null,
-				render : function(data, type, row) {
-					if(data.isstore == true){
-						return "是";
-					} else {
-						return "否";
-					}
-				}
-			}, {
-				"data" : "time"
-			}, {
-				"data" : null,
-				render : function(data, type, row) {
-					return "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-pencil'></i></a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-trash-o'></i></a>";
-				}
-			} ]
+		$(document).ready(function() {
+			tableRender();
 		});
-	}
-</script>
+
+		function tableRender() {
+			$('#users').dataTable({
+				destroy : true,
+				"ajax" : "../d/getAllUsers.action",
+				"columns" : [ {
+					"data" : "openId"
+				}, {
+					"data" : "name"
+				}, {
+					"data" : "gender"
+				}, {
+					"data" : "mobile"
+				}, {
+					"data" : null,
+					render : function(data, type, row) {
+						if (data.isstore == true) {
+							return "是";
+						} else {
+							return "否";
+						}
+					}
+				}, {
+					"data" : "time"
+				}, {
+					"data" : null,
+					render : function(data, type, row) {
+						return "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-pencil'></i></a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-trash-o'></i></a>";
+					}
+				} ]
+			});
+		}
+	</script>
 </body>
 </html>

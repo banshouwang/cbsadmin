@@ -132,9 +132,7 @@
 			<li>
 				<ul class="dashboard-menu nav nav-list collapse in">
 					<li><a href="#"><span class="fa fa-caret-right"></span> Dashboard</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span> 全局设置</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('resource')"><span class="fa fa-caret-right"></span> 资源监控</a></li>
-					<li><a href="#"><span class="fa fa-caret-right"></span> 功能管理</a></li>
 				</ul>
 			</li>
 
@@ -160,6 +158,22 @@
 					<li><a href="#"><span class="fa fa-caret-right"></span> 订单</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span> 用户</a></li>
 					<li><a href="#"><span class="fa fa-caret-right"></span> 商品</a></li>
+				</ul>
+			</li>
+			<li><a href="#" data-target=".money-menu"
+				class="nav-header collapsed" data-toggle="collapse"><i
+					class="fa fa-fw fa-briefcase"></i> 资金管理 <i class="fa fa-collapse"></i></a></li>
+			<li>
+				<ul class="money-menu nav nav-list collapse">
+					<li><a href="#"><span class="fa fa-caret-right"></span> 结算管理</a></li>
+				</ul>
+			</li>
+			<li><a href="#" data-target=".sys-menu"
+				class="nav-header collapsed" data-toggle="collapse"><i
+					class="fa fa-fw fa-briefcase"></i> 系统设置 <i class="fa fa-collapse"></i></a></li>
+			<li>
+				<ul class="sys-menu nav nav-list collapse">
+					<li><a href="#"><span class="fa fa-caret-right"></span> 微信设置</a></li>
 				</ul>
 			</li>
 		</ul>

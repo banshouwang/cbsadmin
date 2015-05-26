@@ -32,6 +32,18 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="deleteCate" class="com.banshou.app.actions.CateAction" method="deleteByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 商品 -->
+		<action name="getAllGoods" class="com.banshou.app.actions.GoodsAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		
 		<!-- 请求 -->
 		<action name="getAllRequests" class="com.banshou.app.actions.RequestAction" method="getAll">

@@ -1,6 +1,5 @@
 package com.banshou.app.actions;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.banshou.app.domain.Category;
 import com.banshou.app.service.CateService;
-import com.banshou.app.utils.common.RandomStrUtil;
+import com.banshou.app.utils.common.CodeGenerator;
 import com.opensymphony.xwork2.ActionSupport;
 
 @Component("CateAction")
@@ -22,6 +21,7 @@ public class CateAction extends ActionSupport {
 	private static final Logger LOGGER = Logger.getLogger(CateAction.class);
 	private Map<String, Object> dataMap = null;
 	private String name;
+	private String number;
 	
 	@Autowired
 	CateService cateService;
@@ -32,13 +32,11 @@ public class CateAction extends ActionSupport {
 		
 		Category category = new Category();
 		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		String regtime = sdf.format(new Date());
-		String num = "FL" + regtime + RandomStrUtil.getNumStr(6);
+		String num = "FL" + CodeGenerator.generateTimeStampString();
 		
 		category.setName(name);
 		category.setIs_valid(1);
-		category.setTime(regtime);
+		category.setTime(new Date());
 		category.setNum(num);
 		cateService.addCate(category);
 		
@@ -54,6 +52,21 @@ public class CateAction extends ActionSupport {
 		dataMap.put("data", cates);
 		return SUCCESS;
 	}
+	
+	public String deleteByNumber(){
+		dataMap = new HashMap<String, Object>();
+		try{
+			cateService.deleteByNumber(number);
+			dataMap.put("data", "success");
+			
+		} catch (Exception e){
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		return SUCCESS;
+	}
+	
+	
 
 	public String getName() {
 		return name;
@@ -69,6 +82,14 @@ public class CateAction extends ActionSupport {
 
 	public void setDataMap(Map<String, Object> dataMap) {
 		this.dataMap = dataMap;
+	}
+
+	public String getNumber() {
+		return number;
+	}
+
+	public void setNumber(String number) {
+		this.number = number;
 	}
 	
 }

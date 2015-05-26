@@ -31,7 +31,7 @@
 	function addCate() {
 		$.ajax({
 			type : "post",
-			url : "json/addCate.action",
+			url : "../d/addCate.action",
 			dataType : "json",
 			data: {
             	name: function () {

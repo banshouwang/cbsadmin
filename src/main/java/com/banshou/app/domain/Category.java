@@ -1,5 +1,7 @@
 package com.banshou.app.domain;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,7 +19,7 @@ public class Category {
 	private String name;
 	
 	@Column(name = "c_time", nullable = true)
-	private String time;
+	private Date time;
 	
 	@Column(name = "c_is_valid", nullable = true)
 	private int is_valid;
@@ -28,10 +30,10 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getTime() {
+	public Date getTime() {
 		return time;
 	}
-	public void setTime(String time) {
+	public void setTime(Date time) {
 		this.time = time;
 	}
 	public int getIs_valid() {

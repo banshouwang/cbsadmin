@@ -1,124 +1,67 @@
 package com.banshou.app.actions;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.log4j.Logger;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import com.banshou.app.domain.Goods;
 import com.banshou.app.service.GoodsService;
-import com.banshou.app.utils.common.RandomStrUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
+@Component("GoodsAction")
 public class GoodsAction extends ActionSupport {
-	
+
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = Logger.getLogger(GoodsAction.class);
+	private Map<String, Object> dataMap = null;
 
-	private String gname;
-	private String category;
-	private String priceori;
-	private String pricehere;
-	private String is_ticket;
-	private String ticket;
-	private String store;
-	
-	public String add(){
-		LOGGER.info("[GoodAction] {add method} begin to add the goods to the DB ...");
-		LOGGER.info("[GoodAction] name is " + gname + ", category is " + category + ", is_ticket is " + is_ticket + ", ticket is " + ticket);
-		
-		Goods goods = new Goods();
-		GoodsService goodsService = new GoodsService();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
-		String regtime = sdf.format(new Date());
-		String number = "SP" + regtime + RandomStrUtil.getNumStr(6);
+	private String number;
 
-		goods.setName(gname);
-		goods.setCategory(category);
-		goods.setNumber(number);
-		goods.setPriceori(Integer.parseInt(priceori));
-		goods.setPricehere(Integer.parseInt(pricehere));
-		
-		if("on".equals(is_ticket)){
-			goods.setIs_ticket(1);
-			goods.setTicket(Integer.parseInt(ticket));
-		} else {
-			goods.setIs_ticket(0);
-			goods.setTicket(0);
+	@Autowired
+	GoodsService goodsService;
+
+	public String getAll() {
+		LOGGER.info("[GoodAction] {getAll method} begin to get the goods from DB ...");
+		dataMap = new HashMap<String, Object>();
+		List<Goods> goods = null;
+		try{
+			goods = goodsService.getAll();
+			LOGGER.info("[GoodAction] {getAll method} the count of the goods items is: " + goods.size());
+			dataMap.put("data", goods);
+		} catch(Exception e){
+			e.printStackTrace();
+			dataMap.put("data", null);
 		}
-		
-//		if("".equals(ticket)){
-//			goods.setTicket(0);
-//		} else {
-//			goods.setTicket(Integer.parseInt(ticket));
-//		}
-		
-		goods.setIs_valid(1);
-		
-		int result = goodsService.addGoods(goods);
-		LOGGER.info("[GoodAction] DB result is: " + result);
-		LOGGER.info("[GoodAction] add goods gonna to end...");
-		
-		if(result > 0){
-			return SUCCESS;
-		}
-		return "ADDFAIL";
+		return SUCCESS;
 	}
 
-	public String getGname() {
-		return gname;
+	public String deleteByNumber() {
+		LOGGER.info("[GoodAction] {delete method} the number of the item will be deleted is : " + number);
+		dataMap = new HashMap<String, Object>();
+		goodsService.deleteById(number);
+		LOGGER.info("[GoodAction] {delete method} delete item: " + number + " successfully");
+		dataMap.put("data", "success");
+		return SUCCESS;
 	}
 
-	public void setGname(String gname) {
-		this.gname = gname;
+	public Map<String, Object> getDataMap() {
+		return dataMap;
 	}
 
-	public String getCategory() {
-		return category;
+	public void setDataMap(Map<String, Object> dataMap) {
+		this.dataMap = dataMap;
 	}
 
-	public void setCategory(String category) {
-		this.category = category;
+	public String getNumber() {
+		return number;
 	}
 
-	public String getPriceori() {
-		return priceori;
+	public void setNumber(String number) {
+		this.number = number;
 	}
 
-	public void setPriceori(String priceori) {
-		this.priceori = priceori;
-	}
-
-	public String getPricehere() {
-		return pricehere;
-	}
-
-	public void setPricehere(String pricehere) {
-		this.pricehere = pricehere;
-	}
-
-	public String getIs_ticket() {
-		return is_ticket;
-	}
-
-	public void setIs_ticket(String is_ticket) {
-		this.is_ticket = is_ticket;
-	}
-
-	public String getTicket() {
-		return ticket;
-	}
-
-	public void setTicket(String ticket) {
-		this.ticket = ticket;
-	}
-
-	public String getStore() {
-		return store;
-	}
-
-	public void setStore(String store) {
-		this.store = store;
-	}
 }

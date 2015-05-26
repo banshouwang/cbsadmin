@@ -28,4 +28,9 @@ public class CateServiceImpl implements CateService {
 		return cateDao.getAll();
 	}
 
+	@Override
+	@Transactional
+	public void deleteByNumber(String number) {
+		cateDao.deleteByNumber(number);
+	}
 }

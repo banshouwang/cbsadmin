@@ -32,4 +32,10 @@ public class CateDaoImpl implements CateDao {
 	    cq.select(root);
 	    return em.createQuery(cq).getResultList();
 	}
+
+	@Override
+	public void deleteByNumber(String number) {
+		Category c = em.find(Category.class, number);
+		em.remove(c);
+	}
 }
