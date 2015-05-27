@@ -20,31 +20,38 @@ public class GoodsAction extends ActionSupport {
 	private Map<String, Object> dataMap = null;
 
 	private String number;
+	private String storeNumber;
 
 	@Autowired
 	GoodsService goodsService;
 
-	public String getAll() {
-		LOGGER.info("[GoodAction] {getAll method} begin to get the goods from DB ...");
+	public String getAllByStoreNumber() {
+		LOGGER.info("[cbsadmin] [GoodAction] {getAll method} begin to get the goods from DB with the store number: " + storeNumber);
 		dataMap = new HashMap<String, Object>();
 		List<Goods> goods = null;
 		try{
-			goods = goodsService.getAll();
-			LOGGER.info("[GoodAction] {getAll method} the count of the goods items is: " + goods.size());
-			dataMap.put("data", goods);
+			goods = goodsService.getAllByStoreNumber(storeNumber);
+			LOGGER.info("[cbsadmin] [GoodAction] {getAllByStoreNumber method} the count of the goods items is: " + goods.size());
 		} catch(Exception e){
 			e.printStackTrace();
-			dataMap.put("data", null);
 		}
+		dataMap.put("data", goods);
 		return SUCCESS;
 	}
 
-	public String deleteByNumber() {
-		LOGGER.info("[GoodAction] {delete method} the number of the item will be deleted is : " + number);
+	public String deleteGoodsByNumber() {
+		LOGGER.info("[cbsadmin] [GoodAction] {delete method} the number of the item will be deleted is : " + number);
 		dataMap = new HashMap<String, Object>();
-		goodsService.deleteById(number);
-		LOGGER.info("[GoodAction] {delete method} delete item: " + number + " successfully");
-		dataMap.put("data", "success");
+		try {
+			goodsService.deleteById(number);
+			dataMap.put("data", "success");
+		} catch (Exception e){
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		
+		LOGGER.info("[cbsadmin] [GoodAction] {delete method} delete item: " + number + " successfully");
+
 		return SUCCESS;
 	}
 
@@ -64,4 +71,11 @@ public class GoodsAction extends ActionSupport {
 		this.number = number;
 	}
 
+	public String getStoreNumber() {
+		return storeNumber;
+	}
+
+	public void setStoreNumber(String storeNumber) {
+		this.storeNumber = storeNumber;
+	}
 }

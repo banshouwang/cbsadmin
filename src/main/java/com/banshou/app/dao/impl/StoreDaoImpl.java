@@ -4,6 +4,9 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,7 +26,11 @@ public class StoreDaoImpl implements StoreDao {
 
 	@Override
 	public List<Store> getAll() {
-		return null;
+		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaQuery<Store> cq = builder.createQuery(Store.class);
+		Root<Store> root = cq.from(Store.class);
+		cq.select(root);
+		return em.createQuery(cq).getResultList();
 	}
 
 	@Override

@@ -39,7 +39,12 @@
 		</action>
 		
 		<!-- 商品 -->
-		<action name="getAllGoods" class="com.banshou.app.actions.GoodsAction" method="getAll">
+		<action name="getAllGoods" class="com.banshou.app.actions.GoodsAction" method="getAllByStoreNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteGoods" class="com.banshou.app.actions.GoodsAction" method="deleteGoodsByNumber">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
@@ -71,6 +76,14 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		
+		<!-- 商店 -->
+		<action name="getAllStore" class="com.banshou.app.actions.StoreAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 	</package>
 
 </struts>

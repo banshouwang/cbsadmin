@@ -35,6 +35,9 @@ public class Store {
 
 	@Column(name = "st_image", nullable = true)
 	private String image;
+	
+	@Column(name = "st_icon", nullable = true)
+	private String icon;
 
 	@Column(name = "st_address", nullable = true)
 	private String address;
@@ -145,4 +148,13 @@ public class Store {
 	public void setTime(Date time) {
 		this.time = time;
 	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+	
 }

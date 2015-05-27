@@ -4,9 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
+import javax.persistence.Query;
 
 import org.springframework.stereotype.Repository;
 
@@ -20,17 +18,22 @@ public class GoodsDaoImpl implements GoodsDao {
 	private EntityManager em;
 
 	@Override
-	public List<Goods> getAll() {
-		CriteriaBuilder builder = em.getCriteriaBuilder();
-		CriteriaQuery<Goods> cq = builder.createQuery(Goods.class);
-		Root<Goods> root = cq.from(Goods.class);
-		cq.select(root);
-		return em.createQuery(cq).getResultList();
-	}
-
-	@Override
 	public void deleteById(String id) {
 		Goods goods = em.find(Goods.class, id);
 		em.remove(goods);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Goods> getAllByStoreNumber(String storeNumber) {
+		String sql = "";
+		if ("all".equals(storeNumber)) {
+			sql = "SELECT * FROM bs_goods";
+		} else {
+			sql = "SELECT * FROM bs_goods WHERE g_storeNum = '" + storeNumber + "'";
+		}
+		Query query = em.createNativeQuery(sql, Goods.class);
+		List<Goods> g = query.getResultList();
+		return g;
 	}
 }

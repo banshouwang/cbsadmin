@@ -19,15 +19,13 @@ public class StoreServiceImpl implements StoreService {
 	@Override
 	@Transactional
 	public void addGoods(Store store) {
-		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
 	@Transactional
 	public List<Store> getAll() {
-		// TODO Auto-generated method stub
-		return null;
+		return storeDao.getAll();
 	}
 
 	@Override
