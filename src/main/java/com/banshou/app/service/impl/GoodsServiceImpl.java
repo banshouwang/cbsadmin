@@ -23,8 +23,20 @@ public class GoodsServiceImpl implements GoodsService {
 	}
 
 	@Override
-	
+	@Transactional
 	public List<Goods> getAllByStoreNumber(String storeNumber) {
 		return goodsDao.getAllByStoreNumber(storeNumber);
+	}
+
+	@Override
+	@Transactional
+	public void downGoods(String number) {
+		goodsDao.downGoods(number);
+	}
+
+	@Override
+	@Transactional
+	public void upGoods(String number) {
+		goodsDao.upGoods(number);
 	}
 }

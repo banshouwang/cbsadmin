@@ -1,5 +1,7 @@
 package com.banshou.app.utils.common;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 
 /**
@@ -176,6 +178,9 @@ public class RandomStrUtil {
 		return st;
 	}
 	
-
-
+	public synchronized static String getTimeString(String format){
+		SimpleDateFormat sdf = new SimpleDateFormat(format);
+		String time = sdf.format(new Date());
+		return time;
+	}
 }

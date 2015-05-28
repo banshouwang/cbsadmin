@@ -7,4 +7,6 @@ import com.banshou.app.domain.Goods;
 public interface GoodsService {
 	public List<Goods> getAllByStoreNumber(String storeNumber);
 	public void deleteById(String id);
+	public void downGoods(String number);
+	public void upGoods(String number);
 }	

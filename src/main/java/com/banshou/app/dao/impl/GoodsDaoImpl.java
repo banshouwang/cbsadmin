@@ -36,4 +36,20 @@ public class GoodsDaoImpl implements GoodsDao {
 		List<Goods> g = query.getResultList();
 		return g;
 	}
+
+	@Override
+	public void downGoods(String number) {
+		Goods goods = em.find(Goods.class, number);
+		goods.setIsvalid(false);
+		em.merge(goods);
+		em.flush();
+	}
+
+	@Override
+	public void upGoods(String number) {
+		Goods goods = em.find(Goods.class, number);
+		goods.setIsvalid(true);
+		em.merge(goods);
+		em.flush();
+	}
 }

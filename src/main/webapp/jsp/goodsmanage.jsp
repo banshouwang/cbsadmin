@@ -22,7 +22,7 @@
 						<th>平台价</th>
 						<th>是否打折</th>
 						<th>抵用券</th>
-						<th>上架?</th>
+						<th>状态</th>
 						<th>操作</th>
 					</tr>
 				</thead>
@@ -93,20 +93,20 @@
 				},{
 					"data" : null,
 					render : function(data, type, row){
-						if(data.isvalid == "是"){
-							return "是";
+						if(data.isvalid == true){
+							return "有效";
 						} else {
-							return "否";
+							return "无效";
 						}
 					}
 				}, {
 					"data" : null,
 					render : function(data, type, row) {
 						var htmlString = "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-trash-o'></i></a> &nbsp;&nbsp;"
-						if(data.isvalid == "是"){
-							htmlString += "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')>下架</a>";
+						if(data.isvalid == true){
+							htmlString += "<a href='javascript:void(0);' onclick=down('" + data.number + "')>下架</a>";
 						} else {
-							htmlString += "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')>上架</a>";
+							htmlString += "<a href='javascript:void(0);' onclick=up('" + data.number + "')>上架</a>";
 						}
 						return htmlString;
 					}
@@ -129,6 +129,52 @@
 						tableRender("all");
 					} else {
 						alert("删除失败");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+
+		function down(number) {
+			console.log("row number: ", number);
+			$.ajax({
+				type : "post",
+				url : "../d/downGoods.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					if(data.data == "success"){
+						alert("下架成功");
+						tableRender("all");
+					} else {
+						alert("下架失败，请重试");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
+			});
+		}
+
+		function up(number) {
+			console.log("row number: ", number);
+			$.ajax({
+				type : "post",
+				url : "../d/upGoods.action",
+				dataType : "json",
+				data : {
+					number : number
+				},
+				success : function(data) {
+					if(data.data == "success"){
+						alert("上架成功");
+						tableRender("all");
+					} else {
+						alert("上架失败，请重试");
 					}
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {

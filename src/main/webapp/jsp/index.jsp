@@ -49,6 +49,9 @@
 		if(command == "requestManage"){
 			$("#maincontent").load("requestmanage.jsp");
 		}
+		if(command == "orderManage"){
+			$("#maincontent").load("ordermanage.jsp");
+		}
 	}
 </script>
 <style type="text/css">
@@ -146,7 +149,7 @@
 					<li><a href="javascript:void(0);" onclick="openpage('goodsManage')"><span class="fa fa-caret-right"></span> 商品管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('cateManage')"><span class="fa fa-caret-right"></span> 分类管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('shopManage')"><span class="fa fa-caret-right"></span> 商户管理</a></li>
-					<li><a href="javascript:void(0);" onclick="openpage('shopManage')"><span class="fa fa-caret-right"></span> 订单管理</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('orderManage')"><span class="fa fa-caret-right"></span> 订单管理</a></li>
 				</ul>
 			</li>
 

@@ -49,6 +49,16 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="downGoods" class="com.banshou.app.actions.GoodsAction" method="downGoods">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="upGoods" class="com.banshou.app.actions.GoodsAction" method="upGoods">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		
 		<!-- 请求 -->
 		<action name="getAllRequests" class="com.banshou.app.actions.RequestAction" method="getAll">
@@ -79,6 +89,18 @@
 		
 		<!-- 商店 -->
 		<action name="getAllStore" class="com.banshou.app.actions.StoreAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 订单 -->
+		<action name="getAllOrder" class="com.banshou.app.actions.OrderAction" method="getAllOrderByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteByNumber" class="com.banshou.app.actions.OrderAction" method="deleteByNumber">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>

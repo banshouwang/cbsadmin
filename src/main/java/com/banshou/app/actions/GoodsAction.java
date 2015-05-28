@@ -54,6 +54,38 @@ public class GoodsAction extends ActionSupport {
 
 		return SUCCESS;
 	}
+	
+	public String downGoods() {
+		LOGGER.info("[cbsadmin] [GoodAction] {downGoods method} the number of the item will be down is : " + number);
+		dataMap = new HashMap<String, Object>();
+		try {
+			goodsService.downGoods(number);
+			dataMap.put("data", "success");
+		} catch (Exception e){
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		
+		LOGGER.info("[cbsadmin] [GoodAction] {delete method} delete item: " + number + " successfully");
+
+		return SUCCESS;
+	}
+	
+	public String upGoods() {
+		LOGGER.info("[cbsadmin] [GoodAction] {upGoods method} the number of the item will be up is : " + number);
+		dataMap = new HashMap<String, Object>();
+		try {
+			goodsService.upGoods(number);
+			dataMap.put("data", "success");
+		} catch (Exception e){
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		
+		LOGGER.info("[cbsadmin] [GoodAction] {delete method} delete item: " + number + " successfully");
+
+		return SUCCESS;
+	}
 
 	public Map<String, Object> getDataMap() {
 		return dataMap;
