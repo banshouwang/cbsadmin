@@ -37,12 +37,11 @@ public class StoreAction extends ActionSupport {
 		String[] images = names.split(",");
 		String icon = images[0];
 		StringBuffer sb = new StringBuffer();
-		for(int i = 1; i < images.length; i ++){
+		for (int i = 1; i < images.length; i++) {
 			sb.append(images[i]).append(",");
 		}
 		String image = sb.toString();
-		
-		
+
 		Store store = new Store();
 		store.setNumber(storeNum);
 		store.setName(storeName);
@@ -57,27 +56,73 @@ public class StoreAction extends ActionSupport {
 		store.setLatitude(latitude);
 		store.setPoint(0);
 
-		int result = storeService.updateStoreByNum(store);
-		if (result == 1) {
+		try{
+			storeService.updateStoreByNum(store);
 			dataMap.put("data", "success");
-		} else {
+		} catch(Exception e){
+			e.printStackTrace();
 			dataMap.put("data", "fail");
 		}
+		
 		names = "";
 		return SUCCESS;
 	}
-	
-	public String getAll(){
+
+	public String getAll() {
 		LOGGER.info("[cbsadmin] [StoreAction] {getAll method} begin to get all the stores");
 		dataMap = new HashMap<String, Object>();
 		List<Store> s = null;
 		try {
 			s = storeService.getAll();
-		} catch (Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		dataMap.put("data", s);
+		return SUCCESS;
+	}
+
+	public String deleteStoreByNumber() {
+		LOGGER.info("[cbsadmin] [StoreAction] {deleteStoreByNumber method} the number of the item will be deleted is : " + storeNum);
+		dataMap = new HashMap<String, Object>();
+		try {
+			storeService.deleteByNumber(storeNum);
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+
+		LOGGER.info("[cbsadmin] [StoreAction] {deleteStoreByNumber method} delete item: " + storeNum + " successfully");
+
+		return SUCCESS;
+	}
+
+	public String downStore() {
+		LOGGER.info("[cbsadmin] [StoreAction] {downStore method} the number of the item will be down is : " + storeNum);
+		dataMap = new HashMap<String, Object>();
+		try {
+			storeService.downStore(storeNum);
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+
+		return SUCCESS;
+	}
+
+	public String upStore() {
+		LOGGER.info("[cbsadmin] [StoreAction] {upGoods method} the number of the item will be up is : " + storeNum);
+		dataMap = new HashMap<String, Object>();
+		try {
+			storeService.upStore(storeNum);
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+
 		return SUCCESS;
 	}
 

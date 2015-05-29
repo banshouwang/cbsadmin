@@ -40,18 +40,30 @@ public class StoreDaoImpl implements StoreDao {
 	}
 
 	@Override
-	public void deleteByNum(String number) {
-
+	public void updateStoreByNum(Store store) {
+		em.merge(store);
+		em.flush();
 	}
 
 	@Override
-	public int updateStoreByNum(Store store) {
-		try {
-			em.merge(store);
-			em.flush();
-			return 1;
-		} catch (Exception e) {
-			return 0;
-		}
+	public void deleteByNumber(String number) {
+		Store store = em.find(Store.class, number);
+		em.remove(store);
+	}
+
+	@Override
+	public void downStore(String number) {
+		Store store = em.find(Store.class, number);
+		store.setIsvalid(false);
+		em.merge(store);
+		em.flush();
+	}
+
+	@Override
+	public void upStore(String number) {
+		Store store = em.find(Store.class, number);
+		store.setIsvalid(true);
+		em.merge(store);
+		em.flush();
 	}
 }

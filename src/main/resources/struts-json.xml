@@ -93,6 +93,21 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="deleteStore" class="com.banshou.app.actions.StoreAction" method="deleteStoreByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="downStore" class="com.banshou.app.actions.StoreAction" method="downStore">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="upStore" class="com.banshou.app.actions.StoreAction" method="upStore">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		
 		<!-- 订单 -->
 		<action name="getAllOrder" class="com.banshou.app.actions.OrderAction" method="getAllOrderByNumber">

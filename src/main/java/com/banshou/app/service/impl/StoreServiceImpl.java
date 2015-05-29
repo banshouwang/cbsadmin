@@ -36,14 +36,25 @@ public class StoreServiceImpl implements StoreService {
 
 	@Override
 	@Transactional
-	public void deleteByNum(String number) {
-		// TODO Auto-generated method stub
-		
+	public void updateStoreByNum(Store store) {
+		storeDao.updateStoreByNum(store);
 	}
 
 	@Override
 	@Transactional
-	public int updateStoreByNum(Store store) {
-		return storeDao.updateStoreByNum(store);
+	public void deleteByNumber(String number) {
+		storeDao.deleteByNumber(number);
+	}
+
+	@Override
+	@Transactional
+	public void downStore(String number) {
+		storeDao.downStore(number);
+	}
+
+	@Override
+	@Transactional
+	public void upStore(String number) {
+		storeDao.upStore(number);
 	}
 }

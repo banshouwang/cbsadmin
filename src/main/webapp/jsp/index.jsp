@@ -34,9 +34,6 @@
 		if(command == "addgoods"){
 			$("#maincontent").load("addgoods.jsp");
 		}
-		if(command == "shopManage"){
-			$("#maincontent").load("shopmanage.jsp");
-		}
 		if(command == "cateManage"){
 			$("#maincontent").load("catemanage.jsp");
 		}
@@ -51,6 +48,9 @@
 		}
 		if(command == "orderManage"){
 			$("#maincontent").load("ordermanage.jsp");
+		}
+		if(command == "storeManage"){
+			$("#maincontent").load("storemanage.jsp");
 		}
 	}
 </script>
@@ -148,7 +148,7 @@
 					<li><a href="javascript:void(0);" onclick="openpage('userManage')"><span class="fa fa-caret-right"></span> 用户管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('goodsManage')"><span class="fa fa-caret-right"></span> 商品管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('cateManage')"><span class="fa fa-caret-right"></span> 分类管理</a></li>
-					<li><a href="javascript:void(0);" onclick="openpage('shopManage')"><span class="fa fa-caret-right"></span> 商户管理</a></li>
+					<li><a href="javascript:void(0);" onclick="openpage('storeManage')"><span class="fa fa-caret-right"></span> 商户管理</a></li>
 					<li><a href="javascript:void(0);" onclick="openpage('orderManage')"><span class="fa fa-caret-right"></span> 订单管理</a></li>
 				</ul>
 			</li>
