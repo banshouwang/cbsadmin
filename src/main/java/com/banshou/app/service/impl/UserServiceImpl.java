@@ -22,5 +22,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getAll();
 	}
 
-
+	@Override
+	@Transactional
+	public void deleteById(String openId) {
+		userDao.deleteById(openId);
+	}
 }

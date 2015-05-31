@@ -21,26 +21,39 @@ public class UserAction extends ActionSupport implements SessionAware {
 	private String password;
 	private Map<String, Object> session;
 	private Map<String, Object> dataMap = null;
+	private String openId;
 
 	@Autowired
 	UserService userService;
 
-	public String getAllUsers(){
+	public String getAllUsers() {
 		LOGGER.info("[cbsadmin] - [UserAction] {getAllUsers method} begin to query all users from DB");
 		dataMap = new HashMap<String, Object>();
 		List<User> users = null;
-		
-		try{
+		try {
 			users = userService.getAll();
-		} catch(Exception e){
+		} catch (Exception e) {
 			e.printStackTrace();
-		} finally{
+		} finally {
 			dataMap.put("data", users);
 		}
-		
+
 		return SUCCESS;
 	}
-	
+
+	public String deleteUserByID() {
+		LOGGER.info("[cbsadmin] - [UserAction] {deleteUserByID method} begin to delete the user with the openId: " + openId);
+		dataMap = new HashMap<String, Object>();
+		try {
+			userService.deleteById(openId);
+			dataMap.put("data", "success");
+		} catch (Exception e) {
+			e.printStackTrace();
+			dataMap.put("data", "error");
+		}
+		return SUCCESS;
+	}
+
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -73,6 +86,14 @@ public class UserAction extends ActionSupport implements SessionAware {
 
 	public void setDataMap(Map<String, Object> dataMap) {
 		this.dataMap = dataMap;
+	}
+
+	public String getOpenId() {
+		return openId;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 }

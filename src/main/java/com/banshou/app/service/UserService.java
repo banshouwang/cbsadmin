@@ -6,4 +6,5 @@ import com.banshou.app.domain.User;
 
 public interface UserService {
 	public List<User> getAll();
+	public void deleteById(String openId);
 }

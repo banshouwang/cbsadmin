@@ -27,7 +27,10 @@ public class UserDaoImpl implements UserDao {
 	    cq.select(root);
 	    return em.createQuery(cq).getResultList();
 	}
-	
-	
 
+	@Override
+	public void deleteById(String openId) {
+		User u = em.find(User.class, openId);
+		em.remove(u);
+	}
 }

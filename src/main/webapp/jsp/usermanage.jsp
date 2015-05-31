@@ -7,12 +7,7 @@
 <body class=" theme-blue">
 	<div class="content_other">
 		<div class="main-content">
-			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary">
-					<i class="fa fa-plus"></i> New User
-				</button>
-				<div class="btn-group"></div>
-			</div>
+			
 			<table id="users" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
@@ -60,9 +55,31 @@
 				}, {
 					"data" : null,
 					render : function(data, type, row) {
-						return "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-pencil'></i></a>" + "&nbsp;&nbsp;" + "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-trash-o'></i></a>";
+						return "<a href='javascript:void(0);' onclick=deleteRow('" + data.openId + "')><i class='fa fa-trash-o'></i></a>";
 					}
 				} ]
+			});
+		}
+
+		function deleteRow(openId) {
+			$.ajax({
+				type : "post",
+				url : "../d/deleteUserByID.action",
+				dataType : "json",
+				data : {
+					openId : openId
+				},
+				success : function(data) {
+					if(data.data == "success"){
+						alert("删除成功");
+						tableRender();
+					} else {
+						alert("删除失败");
+					}
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					alert(errorThrown);
+				}
 			});
 		}
 	</script>
