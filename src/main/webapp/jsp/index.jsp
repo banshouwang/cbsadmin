@@ -16,10 +16,10 @@
 <link rel="stylesheet" type="text/css" href="../lib/datatable/dataTables.bootstrap.css">
 
 <script type="text/javascript" src="../lib/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script>
+<!-- <script type="text/javascript" src="../lib/jQuery-Knob/js/jquery.knob.js"></script> -->
 <script type="text/javascript" src="../lib/datatable/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="../lib/datatable/dataTables.bootstrap.js" ></script>
-<script type="text/javascript" src="../js/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="../lib/jquery.validate.min.js" ></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$('#example').DataTable();
@@ -51,6 +51,12 @@
 		}
 		if(command == "storeManage"){
 			$("#maincontent").load("storemanage.jsp");
+		}
+		if(command == "proManage"){
+			$("#maincontent").load("promanage.jsp");
+		}
+		if(command == "cityManage"){
+			$("#maincontent").load("citymanage.jsp");
 		}
 	}
 </script>
@@ -155,7 +161,7 @@
 
 			<li><a href="#" data-target=".accounts-menu"
 				class="nav-header collapsed" data-toggle="collapse"><i
-					class="fa fa-fw fa-briefcase"></i> 报表系统 <i class="fa fa-collapse"></i></a></li>
+					class="fa fa-fw fa-list-alt"></i> 报表系统 </a></li>
 			<li>
 				<ul class="accounts-menu nav nav-list collapse">
 					<li><a href="#"><span class="fa fa-caret-right"></span> 订单</a></li>
@@ -165,18 +171,25 @@
 			</li>
 			<li><a href="#" data-target=".money-menu"
 				class="nav-header collapsed" data-toggle="collapse"><i
-					class="fa fa-fw fa-briefcase"></i> 资金管理 <i class="fa fa-collapse"></i></a></li>
+					class="fa fa-fw fa-money"></i> 资金管理 <i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="money-menu nav nav-list collapse">
 					<li><a href="#"><span class="fa fa-caret-right"></span> 结算管理</a></li>
 				</ul>
 			</li>
+			
 			<li><a href="#" data-target=".sys-menu"
 				class="nav-header collapsed" data-toggle="collapse"><i
-					class="fa fa-fw fa-briefcase"></i> 系统设置 <i class="fa fa-collapse"></i></a></li>
+					class="fa fa-fw fa-key"></i> 系统设置 <i class="fa fa-collapse"></i></a></li>
 			<li>
 				<ul class="sys-menu nav nav-list collapse">
 					<li><a href="#"><span class="fa fa-caret-right"></span> 微信设置</a></li>
+				</ul>
+				<ul class="sys-menu nav nav-list collapse">
+					<li><a href="javascript:void(0);" onclick="openpage('proManage')"><span class="fa fa-caret-right"></span> 省份管理</a></li>
+				</ul>
+				<ul class="sys-menu nav nav-list collapse">
+					<li><a href="javascript:void(0);" onclick="openpage('cityManage')"><span class="fa fa-caret-right"></span> 城市管理</a></li>
 				</ul>
 			</li>
 		</ul>

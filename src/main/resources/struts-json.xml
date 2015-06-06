@@ -126,6 +126,40 @@
 			</result>
 		</action>
 		
+		<!-- 省份管理 -->
+		<action name="getAllPros" class="com.banshou.app.actions.ProAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteProByNumber" class="com.banshou.app.actions.ProAction" method="deleteProByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="addPro" class="com.banshou.app.actions.ProAction" method="add">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
+		<!-- 城市管理 -->
+		<action name="getAllCities" class="com.banshou.app.actions.CityAction" method="getAll">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="deleteCity" class="com.banshou.app.actions.CityAction" method="deleteCityByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="addCity" class="com.banshou.app.actions.CityAction" method="add">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		
 	</package>
 
 </struts>

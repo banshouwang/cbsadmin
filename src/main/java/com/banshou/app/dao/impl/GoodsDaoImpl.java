@@ -40,7 +40,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	@Override
 	public void downGoods(String number) {
 		Goods goods = em.find(Goods.class, number);
-		goods.setIsvalid(false);
+		goods.setStatus("platformDown");
 		em.merge(goods);
 		em.flush();
 	}
@@ -48,7 +48,7 @@ public class GoodsDaoImpl implements GoodsDao {
 	@Override
 	public void upGoods(String number) {
 		Goods goods = em.find(Goods.class, number);
-		goods.setIsvalid(true);
+		goods.setStatus("active");
 		em.merge(goods);
 		em.flush();
 	}

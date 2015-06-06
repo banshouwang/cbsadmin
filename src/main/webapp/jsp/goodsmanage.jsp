@@ -93,17 +93,21 @@
 				},{
 					"data" : null,
 					render : function(data, type, row){
-						if(data.isvalid == true){
+						if(data.status == "active"){
 							return "有效";
+						} else if(data.status == "storeDown"){
+							return "被商家下架";
+						} else if(data.status == "platformDown"){
+							return "被平台下架";
 						} else {
-							return "无效";
+
 						}
 					}
 				}, {
 					"data" : null,
 					render : function(data, type, row) {
 						var htmlString = "<a href='javascript:void(0);' onclick=deleteRow('" + data.number + "')><i class='fa fa-trash-o'></i></a> &nbsp;&nbsp;"
-						if(data.isvalid == true){
+						if(data.status == "active"){
 							htmlString += "<a href='javascript:void(0);' onclick=down('" + data.number + "')>下架</a>";
 						} else {
 							htmlString += "<a href='javascript:void(0);' onclick=up('" + data.number + "')>上架</a>";
