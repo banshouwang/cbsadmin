@@ -1,5 +1,6 @@
 package com.banshou.app.actions;
 
+import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.banshou.app.domain.User;
 import com.banshou.app.service.UserService;
+import com.banshou.app.utils.security.MD5HashUtil;
 import com.opensymphony.xwork2.ActionSupport;
 
 public class UserAction extends ActionSupport implements SessionAware {
@@ -54,6 +56,24 @@ public class UserAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
+	public String login() {
+		dataMap = new HashMap<String, Object>();
+		User user = null;
+		try {
+			user = userService.login(mobile, MD5HashUtil.hashCode(password));
+		} catch (NoSuchAlgorithmException e) {
+			e.printStackTrace();
+		}
+		session.put("user", user);
+		dataMap.put("data", "success");
+		return SUCCESS;
+	}
+	
+	public String logout() {
+		session.clear();
+		return SUCCESS;
+	}
+	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;

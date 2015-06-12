@@ -25,6 +25,11 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="login" class="com.banshou.app.actions.UserAction" method="login">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 
 		<!-- 分类 -->
 		<action name="addCate" class="com.banshou.app.actions.CateAction" method="add">

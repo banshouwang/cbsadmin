@@ -18,9 +18,12 @@
 		<action name="mobileValid" class="com.banshou.app.actions.UserAction" method="mobileValid">
 			<result name="success">registrysec.jsp</result>
 		</action>	
-		<action name="services" class="com.banshou.app.actions.UserAction" method="login">
+		<!-- <action name="services" class="com.banshou.app.actions.UserAction" method="login">
 			<result name="success">index.jsp</result>
 			<result name="REGISTRY">registry.jsp</result>
+		</action> -->
+		<action name="logout" class="com.banshou.app.actions.UserAction" method="logout">
+			<result name="success" type="redirect">../index.jsp</result>
 		</action>
 		<action name="addPoint" class="com.banshou.app.actions.UserAction" method="addPoint">
 			<result name="success">index.jsp</result>

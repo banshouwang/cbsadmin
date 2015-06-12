@@ -110,25 +110,12 @@
 
 		<div class="navbar-collapse collapse" style="height: 1px;">
 			<ul id="main-menu" class="nav navbar-nav navbar-right">
-				<li class="dropdown hidden-xs"><a href="#"
-					class="dropdown-toggle" data-toggle="dropdown"> <span
-						class="glyphicon glyphicon-user padding-right-small"
-						style="position: relative; top: 3px;"></span> 二青 <i
-						class="fa fa-caret-down"></i> </a>
+				<li class="dropdown hidden-xs"><a href="#" class="dropdown-toggle" data-toggle="dropdown"> <span class="glyphicon glyphicon-user padding-right-small" style="position: relative; top: 3px;"></span> ${sessionScope.user.name } <i class="fa fa-caret-down"></i>
+				</a>
 
 					<ul class="dropdown-menu">
-						<!-- <li><a href="./">My Account</a></li>
-						<li class="divider"></li>
-						<li class="dropdown-header">Admin Panel</li>
-						<li><a href="./">Users</a></li>
-						<li><a href="./">Security</a></li>
-						<li><a tabindex="-1" href="./">Payments</a></li>
-						<li class="divider"></li> -->
-						<li>
-							<a tabindex="-1" href="sign-in.html">Logout</a>
-						</li>
-					</ul>
-				</li>
+						<li><a tabindex="-1" href="../mobile/logout.action">注销</a></li>
+					</ul></li>
 			</ul>
 		</div>
 	</div>

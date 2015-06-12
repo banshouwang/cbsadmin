@@ -43,6 +43,9 @@ public class User {
 	@Column(name = "u_password", nullable = true)
 	private String password;
 	
+	@Column(name = "u_isadmin", nullable = true)
+	private boolean isadmin;
+	
 	public String getGender() {
 		return gender;
 	}
@@ -129,6 +132,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public boolean isIsadmin() {
+		return isadmin;
+	}
+
+	public void setIsadmin(boolean isadmin) {
+		this.isadmin = isadmin;
 	}
 
 }

@@ -13,7 +13,7 @@
 				</button>
 				<div class="btn-group"></div>
 			</div>
-			<table id="requests" class="table">
+			<table id="requests" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>
 						<th width="260px">请求编号</th>

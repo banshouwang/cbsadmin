@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -32,5 +33,26 @@ public class UserDaoImpl implements UserDao {
 	public void deleteById(String openId) {
 		User u = em.find(User.class, openId);
 		em.remove(u);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public User login(String mobile, String password) {
+		String sql = "SELECT * FROM bs_user WHERE u_mobile=? AND u_password=?";
+		System.out.println("SQL: " + sql);
+		Query query = em.createNativeQuery(sql, User.class);
+		query.setParameter(1, mobile);
+		query.setParameter(2, password);
+		List<User> users = query.getResultList();
+		if (users.size() != 0) {
+			User u = users.get(0);
+			if (u.isIsadmin()) {
+				return users.get(0);
+			} else {
+				return null;
+			}
+		} else {
+			return null;
+		}
 	}
 }
