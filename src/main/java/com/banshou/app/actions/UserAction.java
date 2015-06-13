@@ -42,6 +42,21 @@ public class UserAction extends ActionSupport implements SessionAware {
 
 		return SUCCESS;
 	}
+	
+	public String getAllNewUsers() {
+		LOGGER.info("[cbsadmin] - [UserAction] {getAllNewUsers method} begin to query all new users from DB");
+		dataMap = new HashMap<String, Object>();
+		List<User> users = null;
+		try {
+			users = userService.getAllNewUsers();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			dataMap.put("data", users);
+		}
+
+		return SUCCESS;
+	}
 
 	public String deleteUserByID() {
 		LOGGER.info("[cbsadmin] - [UserAction] {deleteUserByID method} begin to delete the user with the openId: " + openId);

@@ -33,4 +33,9 @@ public class UserServiceImpl implements UserService {
 	public User login(String mobile, String password) {
 		return userDao.login(mobile, password);
 	}
+
+	@Override
+	public List<User> getAllNewUsers() {
+		return userDao.getAllNewUsers();
+	}
 }

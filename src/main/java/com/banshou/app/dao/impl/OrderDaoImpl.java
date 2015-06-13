@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.banshou.app.dao.OrderDao;
 import com.banshou.app.domain.Order;
-import com.banshou.app.utils.common.RandomStrUtil;
 
 @Repository
 public class OrderDaoImpl implements OrderDao {
@@ -21,16 +20,10 @@ public class OrderDaoImpl implements OrderDao {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Order> getToday() {
-		try {
-			String today = RandomStrUtil.getTimeString("yyyyMMdd");
-			String sql = "SELECT * FROM bs_order WHERE o_creatTime regexp '^" + today + "'";
-			System.out.println("SQL: " + sql);
-			Query query = em.createNativeQuery(sql, Order.class);
-			List<Order> orders = query.getResultList();
-			return orders;
-		} catch (Exception e) {
-			return null;
-		}
+		String sql = "SELECT * FROM bs_order where date(o_createTime) = curdate()";
+		Query query = em.createNativeQuery(sql, Order.class);
+		List<Order> orders = query.getResultList();
+		return orders;
 	}
 
 	@Override

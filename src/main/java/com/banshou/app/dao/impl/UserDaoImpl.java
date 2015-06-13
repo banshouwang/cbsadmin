@@ -55,4 +55,13 @@ public class UserDaoImpl implements UserDao {
 			return null;
 		}
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<User> getAllNewUsers() {
+		String sql = "SELECT * FROM bs_user where date(u_time) = curdate()";
+		Query query = em.createNativeQuery(sql, User.class);
+		List<User> users = query.getResultList();
+		return users;
+	}
 }

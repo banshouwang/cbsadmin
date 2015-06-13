@@ -47,6 +47,22 @@ public class OrderAction extends ActionSupport {
 		return SUCCESS;
 	}
 	
+	public String getAllNewOrders() {
+		LOGGER.info("[cbsadmin] [OrderAction] {getAllNewOrders method} begin to get the all new orders");
+		dataMap = new HashMap<String, Object>();
+		List<Order> orders = null;
+		try{
+			orders = orderService.getToday();
+			dataMap.put("data", orders);
+		} catch(Exception e){
+			e.printStackTrace();
+		} finally {
+			dataMap.put("data", orders);
+		}
+		
+		return SUCCESS;
+	}
+	
 	public String deleteByNumber(){
 		LOGGER.info("[cbsadmin] [OrderAction] {delete method} the number of the item will be deleted is : " + number);
 		dataMap = new HashMap<String, Object>();

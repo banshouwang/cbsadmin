@@ -7,12 +7,6 @@
 <body class=" theme-blue">
 	<div class="content_other">
 		<div class="main-content">
-			<div class="btn-toolbar list-toolbar">
-				<button class="btn btn-primary">
-					<i class="fa fa-plus"></i> New User
-				</button>
-				<div class="btn-group"></div>
-			</div>
 			<table id="requests" class="table table-striped table-bordered table-hover">
 				<thead>
 					<tr>

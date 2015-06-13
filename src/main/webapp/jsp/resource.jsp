@@ -3,11 +3,7 @@
 <!doctype html>
 <html>
 <head>
-<script type="text/javascript">
-	$(function() {
-		$(".knob").knob();
-	});
-</script>
+
 </head>
 <body class=" theme-blue">
 			<div class="main-content">
@@ -52,6 +48,5 @@
 					</div>
 				</div>
 			</div>
-	<script src="lib/bootstrap/js/bootstrap.js"></script>
 </body>
 </html>

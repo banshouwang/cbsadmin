@@ -15,6 +15,11 @@
 				<param name="root">dataMap</param>
 			</result>
 		</action>
+		<action name="getAllNewUsers" class="com.banshou.app.actions.UserAction" method="getAllNewUsers">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
 		<action name="checkMobile" class="com.banshou.app.actions.UserAction" method="checkMobile">
 			<result type="json">
 				<param name="root">dataMap</param>
@@ -121,6 +126,11 @@
 		
 		<!-- 订单 -->
 		<action name="getAllOrder" class="com.banshou.app.actions.OrderAction" method="getAllOrderByNumber">
+			<result type="json">
+				<param name="root">dataMap</param>
+			</result>
+		</action>
+		<action name="getAllNewOrders" class="com.banshou.app.actions.OrderAction" method="getAllNewOrders">
 			<result type="json">
 				<param name="root">dataMap</param>
 			</result>
