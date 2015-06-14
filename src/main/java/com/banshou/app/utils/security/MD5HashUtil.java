@@ -64,7 +64,7 @@ public class MD5HashUtil {
 	}
 
 	public static void main(String args[]) throws NoSuchAlgorithmException {
-		String string = "bskj2015";
+		String string = "";
 		System.out.println(hashCode(string));
 	}
 }
